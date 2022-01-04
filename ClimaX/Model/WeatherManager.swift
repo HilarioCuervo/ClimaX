@@ -11,19 +11,19 @@ import CoreLocation
 
 struct WeatherManager {
     
-    let weatherURL = "http://api.openweathermap.org/data/2.5/forecast?appid=2ecba371f5a9ac6cacf66411aaf331bd&units=metric"
+    let weatherURL = "http://api.openweathermap.org/data/2.5/forecast?appid="
     var delegate: WeatherDelegate?
     
-    
+
     func searchWeather(city: String) {
-        let urlString = self.weatherURL + "&q=\(city)"
+        let urlString = self.weatherURL + ApiKey.key + "&q=\(city)&units=metric"
         
         performRequest(urlString: urlString)
     }
     
     
     func searchWeather(latitude: CLLocationDegrees, longitude: CLLocationDegrees) {
-        let urlString = self.weatherURL + "&lat=\(latitude)" + "&lon=\(longitude)"
+        let urlString = self.weatherURL + ApiKey.key + "&lat=\(latitude)" + "&lon=\(longitude)&units=metric"
         
         performRequest(urlString: urlString)
     }
